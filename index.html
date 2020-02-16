@@ -20,12 +20,21 @@
 	  });
 			    
 	  displayQ4Choices();
+	  displayQ6Choices();
 	  function displayQ4Choices(){
 	      let q4ChoicesArray = ["Maine", "Rhose Island", "Maryland", "Delaware"];
 	      q4ChoicesArray = _.shuffle(q4ChoicesArray);
 
 	      for (let i = 0; i < q4ChoicesArray.length; i++) {
 		  $("#q4Choices").append(' <input type="radio" name="q4" id='+q4ChoicesArray[i]+'> <label for='+q4ChoicesArray[i]+'>'+q4ChoicesArray[i]+'</label> ');
+	      }
+	  }
+	  function displayQ6Choices(){
+	      let q6ChoicesArray = ["3,730 km", "2,320 km", "5,630 km", "3,185 km"];
+	      q6ChoicesArray = _.shuffle(q6ChoicesArray);
+
+	      for (let i = 0; i < q6ChoicesArray.length; i++) {
+		  $("#q6Choices").append(' <input type="radio" name="q6" id='+q6ChoicesArray[i]+'> <label for='+q6ChoicesArray[i]+'>'+q6ChoicesArray[i]+'</label> ');
 	      }
 	  }
 	  function isFormValid(){
@@ -47,7 +56,8 @@
 	      let q1Response = $("#q1").val().toLowerCase();
 	      let q2Response = $("#q2").val();
 	      let q4Response = $("input[name=q4]:checked").val();
-
+	      let q6Response = $("input[name=q6]:checked").val();
+	      
 	      if(q1Response == "sacramento") {
 		  rightAnswer(1, 20);
 	      }else {
@@ -73,6 +83,11 @@
 		  rightAnswer(5, 20);
 	      }else {
 		  wrongAnswer(5);
+	      }
+	      if (q6Response == "3,730 km") {
+		  rightAnswer(6, 12.5);
+	      }else{
+		  wrongAnswer(6);
 	      }
 
 	      attempts++;
@@ -151,11 +166,25 @@
     
     <br><br>
     <div id="q5Feedback"></div>
-										     
-    <br>
-    <h3 id="validationFdbk" class="bg-danger text-white"></h3>
-    <button class="btn btn-primary"> Submit Quiz </button> 
-    <br>
+
+    <h3><span id="markImg6"></span>What is the length of the Mississippi?</h3>
+    <div id="q6Choices"></div>
+    <br><br>
+    <div id="q6Feedback"></div>
+    <br><br>
+
+    <h3><span id="markImg7"></span>What is the length of the Mississippi</h3>
+    <div id="q7Choices"></div>
+    <br><br>
+    <div id="q7Feedback"></div>
+    <br><br>
+
+     <h3><span id="markImg8"></span>What is the length of the Mississippi</h3>
+    <div id="q8Choices"></div>
+    <br><br>
+    <div id="q8Feedback"></div>
+    <br><br>
+    
     <h2 id="totalScore"></h2>
     <h3 id="totalAttempts"></h3>
     <h3 id="Congratulations"></h3>
